@@ -1,8 +1,16 @@
 <template>
   <div>
-    <div class="work">Work History</div>
-    <div v-for="(work, i) in works" :key="i">
-      <work-item :work="work" :uid="uid" />
+    <div class="resume-title">Work History</div>
+    <div class="content" v-for="(work, i) in works" :key="i">
+<!--      <work-item :work="work" :uid="uid" />-->
+      <div class="fl-sp">
+        <div>
+          <div>Company: {{ work.company }}</div>
+          <div>title: {{ work.title }}</div>
+        </div>
+        <div class="work-year"> {{ work.syear }} - {{ work.eyear }}</div>
+      </div>
+
     </div>
     <div class="te">
       <span @click="clearMarkers">clear markers</span>
@@ -66,6 +74,7 @@ export default {
   },
   created() {
     this.$bind('works', db.collection('resumes').doc(this.uid).collection('works'))
+    console.log('workmodule===', this.works)
   },
   methods: {
     changeMode(mode) {
@@ -78,8 +87,32 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.work {
-  margin: 20px 0;
+.resume-title {
+  margin: 20px;
+  font-size: 26px;
+  position: relative;
+}
+.resume-title:before {
+  content: '';
+  display: block;
+  border-left: 4px solid #00B38A;
+  height: 20px;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.content {
+  margin: 10px;
+}
+.work-year {
+  position: absolute;
+  right: 10px;
+}
+.fl-sp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 </style>
 
