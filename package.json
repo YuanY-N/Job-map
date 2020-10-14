@@ -25,6 +25,7 @@
     "path-to-regexp": "2.4.0",
     "vue": "2.6.10",
     "vue-analytics": "^5.22.1",
+    "vue-iscroll-view": "^1.0.3",
     "vue-router": "3.0.6",
     "vuefire": "^2.2.4",
     "vuegm": "^0.0.2",
